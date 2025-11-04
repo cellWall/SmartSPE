@@ -1,0 +1,24 @@
+<div class="smartspe-container">
+    <h2>{{activityname}}</h2>
+    <p>{{description}}</p>
+
+    <form method="post" action="">
+        <ol>
+            {{#questions}}
+            <li>
+                <label>{{text}}</label><br>
+                <select name="q{{id}}">
+                    <option value="1">1 - Strongly Disagree</option>
+                    <option value="2">2 - Disagree</option>
+                    <option value="3">3 - Neutral</option>
+                    <option value="4">4 - Agree</option>
+                    <option value="5">5 - Strongly Agree</option>
+                </select>
+            </li>
+            {{/questions}}
+        </ol>
+        <label for="comment">Comments:</label><br>
+        <textarea name="comment" rows="4" cols="50"></textarea><br><br>
+        <button type="submit" class="btn btn-primary">Submit Evaluation</button>
+    </form>
+</div>

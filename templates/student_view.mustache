@@ -1,0 +1,66 @@
+<div class="smartspe-student-evaluation">
+    <h2>{{fullname}}</h2>
+    <h3> Evaluating: {{evaluatee_name}}</h3>
+    <p class="text-muted">{{#is_self}}You will start by evaluating yourself by answering the following questions. Please note that everything you put in this form will be kept strictly confidential by the Unit Coordinator. Therefore, we encourage you to be as honest and consistent as possible. This evaluation is very important for us to ensure all students are perfoming well. {{/is_self}}{{#is_peer}}You have completed your self evaluation. Now, please do peer evaluation for your teammate. Please note that everything you put in this form will be kept strictly confidential by the Unit Coordinator. Therefore, we encourage you to be as honest and consistent as possible. This evaluation is very important for us to ensure all students are perfoming well. {{/is_peer}}</p>
+
+    <form method="post" action="student_evaluate.php?id={{cmid}}" id="evaluation-form">
+        <input type="hidden" name="sesskey" value="{{sesskey}}">
+        <input type="hidden" name="type" value="{{type}}">
+        <input type="hidden" name="evaluateeid" value="{{evaluateeid}}">
+        <input type="hidden" name="action" value="" id="form-action">
+
+        {{#questions}}
+        <div class="question-block mb-4 p-3 border rounded">
+            <p><strong>Question {{display_number}}:</strong></p>
+            <div class="mb-2">{{{text}}}</div>
+
+            {{#qtype_mcq}}
+                {{#options}}
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" 
+                          name="answer_{{display_number}}" 
+                          value="{{value}}" 
+                          {{#checked}}checked{{/checked}}
+                          required>
+                    <label class="form-check-label">{{{text}}}</label>
+                </div>
+                {{/options}}
+            {{/qtype_mcq}}
+
+            {{#qtype_essay}}
+                <textarea name="answer_{{display_number}}" 
+                          rows="4" 
+                          class="form-control" 
+                          placeholder="Enter your comment here..." 
+                          required>{{current_answer}}</textarea>
+            {{/qtype_essay}}
+        </div>
+        {{/questions}}
+
+        <div class="evaluation-actions mt-4 d-flex justify-content-between">
+            <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                <i class="fa fa-arrow-left"></i> Back
+            </button>
+            
+            <div>                
+                {{#has_next}}
+                <button type="submit" class="btn btn-primary" onclick="setAction('next')">
+                    Next Peer <i class="fa fa-arrow-right"></i>
+                </button>
+                {{/has_next}}
+                
+                {{#is_last}}
+                <button type="submit" class="btn btn-success" onclick="setAction('submit')">
+                    <i class="fa fa-check"></i> Submit All Evaluations
+                </button>
+                {{/is_last}}
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+function setAction(action) {
+    document.getElementById('form-action').value = action;
+}
+</script>

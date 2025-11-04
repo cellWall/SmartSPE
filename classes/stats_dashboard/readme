@@ -1,0 +1,11 @@
+
+//new files
+gen_dashboard.py: generates the dashboard `stats_dashboard.html` and saves it in /pix
+ICT305_current (1).ipynb: the original charts source code from regina
+stats_dashboard.php: test page for iframe rendering (must be in root)
+
+
+//edited files
+access.php: added `viewstatsdashboard` capability
+version.php: bumped up version to 2025110101 to force upgrade
+teacher_view.php: added `view stats dashboard` button for testing purposes
