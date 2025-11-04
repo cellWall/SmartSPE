@@ -22,10 +22,13 @@ echo $OUTPUT->header();
 // Add download button
 echo '<div class="mb-4 mt-3">';
 echo '<a href="download_results.php?id=' . $cmid . '&type=csv" class="btn btn-primary me-2">
-        <i class="fa fa-download"></i> Download result details (CSV)
+        <i class="fa fa-download"></i> Download All Evaluation Responses (CSV)
       </a>';
-echo '<a href="download_results.php?id=' . $cmid . '&type=xlsx" class="btn btn-success">
-        <i class="fa fa-file-excel-o"></i> Download result summary (XLSX)
+echo '<a href="download_results.php?id=' . $cmid . '&type=xlsx" class="btn btn-success me-2">
+        <i class="fa fa-file-excel-o"></i> Download Grading Summary (XLSX)
+      </a>';
+echo '<a href="download_results.php?id=' . $cmid . '&type=csv" class="btn btn-primary me-2">
+        <i class="fa fa-download"></i> Download Sentiment Analysis Report (CSV)
       </a>';
 echo '</div>';
 
